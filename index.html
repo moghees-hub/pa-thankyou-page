@@ -367,9 +367,15 @@ body {
   .testi-grid { grid-template-columns: repeat(2, 1fr); }
   .transform-grid { grid-template-columns: repeat(2, 1fr); }
   .pillars { grid-template-columns: 1fr 1fr; }
+  .section-title { font-size: clamp(26px, 6vw, 38px); }
+  h2[style*="clamp"] { font-size: clamp(26px, 6vw, 38px) !important; }
 }
 @media (max-width: 480px) {
   .pillars { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(28px, 8vw, 42px); }
+  .section-title { font-size: clamp(24px, 7vw, 34px); }
+  h2[style*="clamp"] { font-size: clamp(24px, 7vw, 34px) !important; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 <script src="https://fast.wistia.com/player.js" async></script>
