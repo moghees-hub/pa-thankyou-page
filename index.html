@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Spot Is Confirmed – Physique Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:       #7FC838;
+  --green-dark:  #5a9a20;
+  --green-light: #edf7e4;
+  --black:       #111111;
+  --dark:        #ffffff;
+  --dark2:       #f0f0f0;
+  --dark3:       #e8e8e8;
+  --white:       #111111;
+  --muted:       #666666;
+  --border:      #dddddd;
+  --card-bg:     #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: #efefef;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container       { max-width: 860px;  margin: 0 auto; padding: 0 20px; }
+.container--wide { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+/* ── SCROLL REVEAL ─────────────────── */
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+[data-reveal].visible { opacity: 1; transform: none; }
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  background: #ffffff;
+  padding: 52px 0 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 350px;
+  display: none;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--green);
+  color: #000;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+.hero__badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: #000;
+  border-radius: 50%;
+  animation: blink 1.6s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.7)} }
+
+.hero h1 {
+  font-size: clamp(34px, 5.5vw, 62px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  margin-bottom: 14px;
+}
+.hero h1 em { font-style: normal; color: var(--green); }
+
+.hero__sub {
+  font-size: 15px;
+  color: #666;
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 36px;
+  max-width: 660px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* Video */
+.video-wrap {
+  max-width: 720px;
+  margin: 0 auto 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  cursor: pointer;
+  border: 1px solid rgba(106,191,62,0.15);
+}
+
+
+
+
+
+
+
+
+
+
+.hero__notice {
+  font-size: 12px; color: #666;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.hero__notice svg { width: 13px; fill: var(--muted); }
+
+/* ══════════════════════════════════════
+   SECTION HELPERS
+══════════════════════════════════════ */
+.sec { padding: 80px 0; }
+.sec--dark  { background: #ffffff;  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.sec--dark2 { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.section-label {
+  display: inline-block;
+  border: 1px solid var(--green-dark);
+  color: var(--green-dark);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 900;
+  line-height: 1.07;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  margin-top: 10px;
+}
+.section-title em { font-style: normal; color: var(--green); }
+
+.section-sub {
+  font-size: 15px; color: #666; font-style: italic; font-weight: 700;
+  margin-top: 14px; max-width: 660px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ══════════════════════════════════════
+   VIDEO TESTIMONIALS
+══════════════════════════════════════ */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.testi-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.testi-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+
+.testi-card__thumb {
+  aspect-ratio: 4/5;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.testi-card:nth-child(1) .testi-card__thumb { background: linear-gradient(160deg,#2a2218,#1a160e); }
+.testi-card:nth-child(2) .testi-card__thumb { background: linear-gradient(160deg,#241e14,#180e0a); }
+.testi-card:nth-child(3) .testi-card__thumb { background: linear-gradient(160deg,#1e2520,#101a12); }
+.testi-card:nth-child(4) .testi-card__thumb { background: linear-gradient(160deg,#201c14,#140e08); }
+.testi-card:nth-child(5) .testi-card__thumb { background: linear-gradient(160deg,#221e16,#16100a); }
+.testi-card:nth-child(6) .testi-card__thumb { background: linear-gradient(160deg,#1a2220,#101614); }
+.testi-card:nth-child(7) .testi-card__thumb { background: linear-gradient(160deg,#261c12,#18100a); }
+.testi-card:nth-child(8) .testi-card__thumb { background: linear-gradient(160deg,#1e2018,#12140e); }
+.testi-card:nth-child(9) .testi-card__thumb { background: linear-gradient(160deg,#221a14,#160e08); }
+
+.testi-play {
+  width: 52px; height: 52px;
+  background: var(--green); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  
+  z-index: 2; position: relative;
+  transition: transform 0.2s, background 0.2s;
+}
+.testi-card:hover .testi-play { transform: scale(1.1); background: var(--green-dark); }
+.testi-play svg { width: 19px; fill: #fff; margin-left: 3px; }
+
+.testi-name-tag {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  color: #fff; font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 5px; z-index: 3;
+}
+
+.testi-card__body {
+  padding: 12px 14px; border-top: 1px solid #eee;
+}
+.testi-card__name { font-size: 13px; font-weight: 700; color: var(--black); }
+.testi-card__result {
+  font-size: 11px; color: var(--green-dark); font-weight: 600;
+  margin-top: 2px; display: flex; align-items: center; gap: 4px;
+}
+.testi-card__result::before { content: '✓'; font-size: 10px; }
+
+/* ══════════════════════════════════════
+   GUARANTEE
+══════════════════════════════════════ */
+.guarantee-wrap {
+  max-width: 760px; margin: 0 auto; text-align: center;
+}
+.guarantee-icon {
+  width: 72px; height: 72px;
+  background: rgba(127,200,56,0.12);
+  border: 2px solid rgba(127,200,56,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.guarantee-icon svg { width: 34px; fill: var(--green); }
+
+.guarantee-box {
+  background: var(--dark3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 24px 32px;
+  margin-top: 32px;
+  display: flex; align-items: flex-start; gap: 16px;
+  text-align: left;
+}
+.guarantee-box svg { width: 20px; fill: var(--green); flex-shrink: 0; margin-top: 3px; }
+.guarantee-box p { font-size: 14px; color: #999; line-height: 1.65; }
+.guarantee-box p strong { color: var(--black); font-weight: 700; }
+.guarantee-box p em { font-style: normal; color: var(--green); font-weight: 600; }
+
+.pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-top: 36px;
+}
+.pillar {
+  background: var(--dark3);
+  border: 1px solid #ddd;
+  border-radius: 10px; padding: 22px 18px; text-align: center;
+}
+.pillar__icon { margin-bottom: 12px; display: flex; justify-content: center; }
+.pillar__icon svg { width: 28px; height: 28px; color: var(--green); }
+.pillar__title { font-size: 13px; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 0.04em; }
+.pillar__desc { font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.5; }
+
+/* ══════════════════════════════════════
+   TRANSFORMATIONS
+══════════════════════════════════════ */
+.transform-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-top: 48px;
+}
+.transform-card {
+  background: #ffffff;
+  border: 1px solid #ddd; border-radius: 10px;
+  overflow: hidden; cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.transform-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+
+.transform-card__visual {
+  overflow: hidden; position: relative; background: #111;
+}
+.transform-card__visual img {
+  width: 100%; height: auto;
+  display: block; transition: transform 0.3s;
+}
+.transform-card:hover .transform-card__visual img { transform: scale(1.03); }
+
+.transform-card__name {
+  padding: 10px 12px;
+  font-size: 12px; font-weight: 700; color: var(--black);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════
+   CTA
+══════════════════════════════════════ */
+.cta-section {
+  padding: 80px 0 92px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; bottom: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 300px;
+  display: none;
+}
+.cta-avatar {
+  width: 62px; height: 62px;
+  background: rgba(106,191,62,0.1);
+  border: 2px solid var(--green);
+  border-radius: 50%; margin: 0 auto 22px;
+  display: flex; align-items: center; justify-content: center; font-size: 26px;
+  position: relative; z-index: 1;
+}
+
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #25D366; color: #fff;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px 40px; border-radius: 50px;
+  text-decoration: none; border: none; cursor: pointer; margin-top: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+  position: relative; z-index: 1;
+}
+.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(37,211,102,0.5); }
+.btn-wa svg { width: 22px; fill: #fff; }
+.cta-note { margin-top: 14px; font-size: 12px; color: var(--muted); position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.footer {
+  background: #1a1a1a; padding: 26px 20px;
+  text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer__logo {
+  font-size: 14px; font-weight: 900; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #333; margin-bottom: 10px;
+}
+.footer__logo em { font-style: normal; color: var(--green); }
+.footer p { font-size: 11px; color: #444; line-height: 1.8; }
+.footer a { color: #555; text-decoration: none; }
+.footer a:hover { color: var(--green); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 760px) {
+  .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .transform-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillars { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .pillars { grid-template-columns: 1fr; }
+}
+</style>
+<script src="https://fast.wistia.com/player.js" async></script>
+</head>
+<body>
+
+<!-- ════ HERO ════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div data-reveal>
+      <div class="hero__badge">Your Spot Is Confirmed</div>
+    </div>
+
+    <h1 data-reveal style="font-size:clamp(28px,4.2vw,52px);">
+      You Are <em>One Call Away</em><br>
+      From The Physique You've Been Chasing For Years
+    </h1>
+
+    <p class="hero__sub" data-reveal>Watch the short video below before your call.<br>It'll make a big difference.</p>
+
+    <div class="video-wrap" data-reveal>
+      <script src="https://fast.wistia.com/player.js" async></script>
+      <script src="https://fast.wistia.com/embed/mz2rakblwv.js" async type="module"></script>
+      <style>wistia-player[media-id='mz2rakblwv']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/mz2rakblwv/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+      <wistia-player media-id="mz2rakblwv" aspect="1.7777777777777777"></wistia-player>
+    </div>
+
+    <p class="hero__notice" data-reveal>
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      Your spot is held but not guaranteed if we aren't a match.
+    </p>
+  </div>
+</section>
+
+<!-- ════ VIDEO TESTIMONIALS ══════════ -->
+<section class="sec" style="background:#efefef;border-top:1px solid #ddd;border-bottom:1px solid #ddd;">
+  <div class="container--wide">
+    <div style="text-align:center;" data-reveal>
+      <span class="section-label" style="border-color:var(--green-dark);color:var(--green-dark);">Real Results</span>
+      <h2 class="section-title" style="margin-top:10px;color:#111;">
+        Hear It Directly From Men<br>
+        <em>Who Stopped Waiting & Took Action</em>
+      </h2>
+      <p class="section-sub">These aren't influencers. They're busy men with jobs, families, and every reason not to start.</p>
+    </div>
+
+    <div class="testi-grid" data-reveal>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/v6wrydquwp.js" async type="module"></script>
+          <style>wistia-player[media-id='v6wrydquwp']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/v6wrydquwp/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="v6wrydquwp" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Ross G</div>
+          <div class="testi-card__result">Coach Dylan</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/ov6y7cwejr.js" async type="module"></script>
+          <style>wistia-player[media-id='ov6y7cwejr']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/ov6y7cwejr/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="ov6y7cwejr" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Nate M</div>
+          <div class="testi-card__result">Coach Adam</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/hjwdqzarde.js" async type="module"></script>
+          <style>wistia-player[media-id='hjwdqzarde']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/hjwdqzarde/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="hjwdqzarde" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Matt B</div>
+          <div class="testi-card__result">Coach Zayne</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/mr9467u1c2.js" async type="module"></script>
+          <style>wistia-player[media-id='mr9467u1c2']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/mr9467u1c2/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="mr9467u1c2" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Hans R</div>
+          <div class="testi-card__result">Coach Kris</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/tnsmwnukaj.js" async type="module"></script>
+          <style>wistia-player[media-id='tnsmwnukaj']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/tnsmwnukaj/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="tnsmwnukaj" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">David M</div>
+          <div class="testi-card__result">Coach Danny</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/kc82ibgltk.js" async type="module"></script>
+          <style>wistia-player[media-id='kc82ibgltk']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/kc82ibgltk/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="kc82ibgltk" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Jamie D</div>
+          <div class="testi-card__result">Coach Adam</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/bqfnlg1d6w.js" async type="module"></script>
+          <style>wistia-player[media-id='bqfnlg1d6w']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/bqfnlg1d6w/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="bqfnlg1d6w" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Marc K</div>
+          <div class="testi-card__result">Coach Ash</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/j7ot6eeo0c.js" async type="module"></script>
+          <style>wistia-player[media-id='j7ot6eeo0c']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/j7ot6eeo0c/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="j7ot6eeo0c" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Joe S</div>
+          <div class="testi-card__result">Coach Kris</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/hbpw88758w.js" async type="module"></script>
+          <style>wistia-player[media-id='hbpw88758w']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/hbpw88758w/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="hbpw88758w" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Rob J</div>
+          <div class="testi-card__result">Coach Connor</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/pjlzx8jn96.js" async type="module"></script>
+          <style>wistia-player[media-id='pjlzx8jn96']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/pjlzx8jn96/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="pjlzx8jn96" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Damien M</div>
+          <div class="testi-card__result">Coach Ash</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/cgg7c79ggc.js" async type="module"></script>
+          <style>wistia-player[media-id='cgg7c79ggc']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/cgg7c79ggc/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="cgg7c79ggc" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Craig D</div>
+          <div class="testi-card__result">Coach Sam</div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card__thumb" style="background:#000;height:auto;aspect-ratio:unset;">
+          <script src="https://fast.wistia.com/embed/x31cxixvo2.js" async type="module"></script>
+          <style>wistia-player[media-id='x31cxixvo2']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/x31cxixvo2/swatch');display:block;filter:blur(5px);padding-top:177.78%;}</style>
+          <wistia-player media-id="x31cxixvo2" aspect="0.5625"></wistia-player>
+        </div>
+        <div class="testi-card__body">
+          <div class="testi-card__name">Chris M</div>
+          <div class="testi-card__result">Coach Kris</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Section separator -->
+    <div style="text-align:center;padding:64px 0 16px;" data-reveal>
+      <h2 style="font-size:clamp(30px,4.5vw,54px);font-weight:900;letter-spacing:-0.025em;line-height:1.05;color:#111;">
+        <span style="color:var(--green);">Busy Men Just Like You Have</span><br>
+        Transformed Their Lives
+      </h2>
+      <p style="font-size:15px;color:#666;font-style:italic;font-weight:700;margin-top:14px;max-width:660px;margin-left:auto;margin-right:auto;">
+        The difference between these men and the ones still stuck isn't talent or time.<br>It's the decision you just made.
+      </p>
+    </div>
+
+    <!-- Transformation Photos -->
+    <div class="transform-grid" data-reveal style="margin-top:32px;">
+      <div class="transform-card" onclick="openLightbox(0)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/jason-wilson.webp" alt="Jason Wilson" loading="lazy"></div><div class="transform-card__name">Jason Wilson</div></div>
+      <div class="transform-card" onclick="openLightbox(1)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/craig-dinblebee.webp" alt="Craig Dimblebee" loading="lazy"></div><div class="transform-card__name">Craig Dimblebee</div></div>
+      <div class="transform-card" onclick="openLightbox(2)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/damien-barr.webp" alt="Damian Barr" loading="lazy"></div><div class="transform-card__name">Damian Barr</div></div>
+      <div class="transform-card" onclick="openLightbox(3)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/dave-hanrahan.webp" alt="Dave Hanrahan" loading="lazy"></div><div class="transform-card__name">Dave Hanrahan</div></div>
+      <div class="transform-card" onclick="openLightbox(4)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/tony-kopa.webp" alt="Tony Kopa" loading="lazy"></div><div class="transform-card__name">Tony Kopa</div></div>
+      <div class="transform-card" onclick="openLightbox(5)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/federico-testa.webp" alt="Federico Testa" loading="lazy"></div><div class="transform-card__name">Federico Testa</div></div>
+      <div class="transform-card" onclick="openLightbox(6)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/joe-smithey.webp" alt="Joe Smithey" loading="lazy"></div><div class="transform-card__name">Joe Smithey</div></div>
+      <div class="transform-card" onclick="openLightbox(7)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/reed-burton.webp" alt="Reed Burton" loading="lazy"></div><div class="transform-card__name">Reed Burton</div></div>
+      <div class="transform-card" onclick="openLightbox(8)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/ricardo-escobedo.webp" alt="Ricardo Escobedo" loading="lazy"></div><div class="transform-card__name">Ricardo Escobedo</div></div>
+      <div class="transform-card" onclick="openLightbox(9)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/russell-smalley.webp" alt="Russell Smalley" loading="lazy"></div><div class="transform-card__name">Russell Smalley</div></div>
+      <div class="transform-card" onclick="openLightbox(10)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/steven-manirath.webp" alt="Steven Manirath" loading="lazy"></div><div class="transform-card__name">Steven Manirath</div></div>
+      <div class="transform-card" onclick="openLightbox(11)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/alex-bond.webp" alt="Alex Bond" loading="lazy"></div><div class="transform-card__name">Alex Bond</div></div>
+      <div class="transform-card" onclick="openLightbox(12)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/joe-schafer.webp" alt="Joe Schafer" loading="lazy"></div><div class="transform-card__name">Joe Schafer</div></div>
+      <div class="transform-card" onclick="openLightbox(13)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/sean-kelly.webp" alt="Sean Kelly" loading="lazy"></div><div class="transform-card__name">Sean Kelly</div></div>
+      <div class="transform-card" onclick="openLightbox(14)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/tim-giessauf.webp" alt="Tim Giessauf" loading="lazy"></div><div class="transform-card__name">Tim Giessauf</div></div>
+      <div class="transform-card" onclick="openLightbox(15)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/luke-salmons.webp" alt="Luke Salmons" loading="lazy"></div><div class="transform-card__name">Luke Salmons</div></div>
+      <div class="transform-card" onclick="openLightbox(16)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/hans-rennings.webp" alt="Hans Rennings" loading="lazy"></div><div class="transform-card__name">Hans Rennings</div></div>
+      <div class="transform-card" onclick="openLightbox(17)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/brad-bond.webp" alt="Brad Bond" loading="lazy"></div><div class="transform-card__name">Brad Bond</div></div>
+      <div class="transform-card" onclick="openLightbox(18)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/zack-bennema.webp" alt="Zack Bennema" loading="lazy"></div><div class="transform-card__name">Zack Bennema</div></div>
+      <div class="transform-card" onclick="openLightbox(19)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/aaron-lake.webp" alt="Aaron Lake" loading="lazy"></div><div class="transform-card__name">Aaron Lake</div></div>
+      <div class="transform-card" onclick="openLightbox(20)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/jake-mcdonell.webp" alt="Jake McDonell" loading="lazy"></div><div class="transform-card__name">Jake McDonell</div></div>
+      <div class="transform-card" onclick="openLightbox(21)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/jake-carus.webp" alt="Jake Carus" loading="lazy"></div><div class="transform-card__name">Jake Carus</div></div>
+      <div class="transform-card" onclick="openLightbox(22)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/andy-taylor.webp" alt="Andy Taylor" loading="lazy"></div><div class="transform-card__name">Andy Taylor</div></div>
+      <div class="transform-card" onclick="openLightbox(23)"><div class="transform-card__visual"><img src="https://physique-academy.s3.amazonaws.com/transformations/alex-purcell.webp" alt="Alex Purcell" loading="lazy"></div><div class="transform-card__name">Alex Purcell</div></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;">
+      <button onclick="closeLightbox()" style="position:absolute;top:20px;right:20px;width:40px;height:40px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(127,200,56,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">✕</button>
+      <button onclick="prevImage()" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(127,200,56,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">‹</button>
+      <button onclick="nextImage()" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(127,200,56,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">›</button>
+      <div style="max-width:860px;width:100%;text-align:center;">
+        <img id="lightbox-img" src="" alt="" style="max-width:100%;max-height:82vh;border-radius:10px;box-shadow:0 24px 80px rgba(0,0,0,0.7);object-fit:contain;">
+        <p id="lightbox-name" style="margin-top:14px;font-size:15px;font-weight:700;color:#fff;"></p>
+        <p id="lightbox-counter" style="font-size:12px;color:var(--muted);margin-top:4px;"></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="sec" style="background:#ffffff;border-top:1px solid #ddd;border-bottom:1px solid #ddd;">
+  <div class="container" style="text-align:center;" data-reveal>
+    <span class="section-label" style="border-color:var(--green-dark);color:var(--green-dark);">Our Promise</span>
+    <div class="guarantee-icon" style="margin-top:20px;background:rgba(127,200,56,0.12);border-color:rgba(127,200,56,0.4);">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+    </div>
+    <h2 class="section-title" style="color:#111;"><em>Get The Results</em> Or You Don't Pay</h2>
+    <p class="section-sub" style="margin-top:14px;color:#666;">We back our programme completely. If you follow the system and don't get the transformation we mapped out together on your call, you don't pay a single cent. Your result is our responsibility.</p>
+  </div>
+
+  <div style="max-width:1200px;margin:48px auto 0;padding:0 20px;" data-reveal>
+    <!-- Elfsight Google Reviews | Physique Academy Google Reviews -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-f0936179-0fc9-48e8-a233-8d48e5eb5d5a" data-elfsight-app-lazy></div>
+  </div>
+</section>
+
+<!-- ════ WHATSAPP CTA ══════════════════ -->
+<section style="background:#ffffff;border-top:1px solid #ddd;padding:72px 0;text-align:center;">
+  <div class="container">
+    <h2 style="font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:-0.02em;color:#111;line-height:1.15;">Got Questions Before The Call?</h2>
+    <h2 style="font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:-0.02em;color:var(--green);line-height:1.15;margin-top:4px;">Drop Us A Message On WhatsApp</h2>
+    <p style="font-size:15px;color:var(--muted);margin-top:14px;">We'll get back to you within minutes.</p>
+    <a href="https://wa.me/447700000000" target="_blank" rel="noopener"
+      style="display:inline-flex;align-items:center;gap:12px;background:#25D366;color:#fff;font-size:16px;font-weight:800;letter-spacing:0.01em;padding:18px 48px;border-radius:50px;text-decoration:none;margin-top:32px;box-shadow:0 4px 24px rgba(37,211,102,0.35);transition:transform 0.2s,box-shadow 0.2s;"
+      onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 36px rgba(37,211,102,0.5)'"
+      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(37,211,102,0.35)'">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Message Us On WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+  <div class="footer__logo">
+    <img src="https://physique-academy.s3.amazonaws.com/general/PA-Logo-Green-White.png" alt="Physique Academy" style="height:52px;width:auto;">
+  </div>
+  <p style="color:#aaaaaa;">© 2026 Physique Academy. All rights reserved.</p>
+  <p style="margin-top:5px;color:#aaaaaa;">Results may vary. Individual outcomes depend on effort, adherence, and starting point.</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+
+  const lightboxImages = [
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/jason-wilson.webp',    name: 'Jason Wilson' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/craig-dinblebee.webp', name: 'Craig Dimblebee' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/damien-barr.webp',     name: 'Damian Barr' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/dave-hanrahan.webp',   name: 'Dave Hanrahan' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/tony-kopa.webp',       name: 'Tony Kopa' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/federico-testa.webp',  name: 'Federico Testa' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/joe-smithey.webp',     name: 'Joe Smithey' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/reed-burton.webp',     name: 'Reed Burton' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/ricardo-escobedo.webp',name: 'Ricardo Escobedo' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/russell-smalley.webp', name: 'Russell Smalley' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/steven-manirath.webp', name: 'Steven Manirath' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/alex-bond.webp',       name: 'Alex Bond' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/joe-schafer.webp',     name: 'Joe Schafer' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/sean-kelly.webp',      name: 'Sean Kelly' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/tim-giessauf.webp',    name: 'Tim Giessauf' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/luke-salmons.webp',    name: 'Luke Salmons' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/hans-rennings.webp',   name: 'Hans Rennings' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/brad-bond.webp',       name: 'Brad Bond' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/zack-bennema.webp',    name: 'Zack Bennema' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/aaron-lake.webp',      name: 'Aaron Lake' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/jake-mcdonell.webp',   name: 'Jake McDonell' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/jake-carus.webp',      name: 'Jake Carus' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/andy-taylor.webp',     name: 'Andy Taylor' },
+    { src: 'https://physique-academy.s3.amazonaws.com/transformations/alex-purcell.webp',    name: 'Alex Purcell' },
+  ];
+
+  let currentIdx = 0;
+
+  function showLightboxImage(idx) {
+    currentIdx = (idx + lightboxImages.length) % lightboxImages.length;
+    document.getElementById('lightbox-img').src = lightboxImages[currentIdx].src;
+    document.getElementById('lightbox-img').alt = lightboxImages[currentIdx].name;
+    document.getElementById('lightbox-name').textContent = lightboxImages[currentIdx].name;
+    document.getElementById('lightbox-counter').textContent = (currentIdx + 1) + ' / ' + lightboxImages.length;
+  }
+
+  function openLightbox(idx) {
+    const lb = document.getElementById('lightbox');
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    showLightboxImage(idx);
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function nextImage() { showLightboxImage(currentIdx + 1); }
+  function prevImage() { showLightboxImage(currentIdx - 1); }
+
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (lb.style.display !== 'flex') return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft')  prevImage();
+  });
+</script>
+</body>
+</html>
