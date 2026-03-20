@@ -45,7 +45,9 @@ body {
    HERO
 ══════════════════════════════════════ */
 /* ── STICKY TOP BAR ─────────────────── */
-.top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #111111; border-bottom: 2px solid var(--green); padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; backdrop-filter: blur(12px); }
+.top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #111111; border-bottom: 2px solid var(--green); padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; backdrop-filter: blur(12px); white-space: nowrap; }
+.top-bar__text .full { display: inline; }
+.top-bar__text .short { display: none; }
 .top-bar__text { color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
 .top-bar__dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.6); } }
@@ -382,15 +384,18 @@ body {
   .transform-grid { grid-template-columns: repeat(2, 1fr); }
   .pillars { grid-template-columns: 1fr 1fr; }
   .section-title { font-size: clamp(26px, 6vw, 38px); }
-  .top-bar { gap: 10px; }
-  .top-bar__text { font-size: 11px; }
+  .top-bar { gap: 8px; padding: 8px 12px; }
+  .top-bar__text { font-size: 10px; }
+  .top-bar__dot { width: 6px; height: 6px; }
+  .top-bar__text .full { display: none; }
+  .top-bar__text .short { display: inline; }
 }
 @media (max-width: 480px) {
   .pillars { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(28px, 8vw, 42px); }
   .section-title { font-size: clamp(24px, 7vw, 34px); }
   .testi-grid { grid-template-columns: 1fr 1fr; }
-  .top-bar__btn { padding: 5px 12px; font-size: 10px; }
+  .top-bar__btn { padding: 4px 10px; font-size: 9px; }
   .float-wa { width: 52px; height: 52px; bottom: 20px; right: 20px; }
   .float-wa svg { width: 26px; height: 26px; }
 }
@@ -401,7 +406,7 @@ body {
 
 <!-- STICKY TOP BAR -->
 <div class="top-bar">
-  <span class="top-bar__text"><span class="top-bar__dot"></span> Confirm your call on WhatsApp to secure your spot</span>
+  <span class="top-bar__text"><span class="top-bar__dot"></span> <span class="full">Confirm your call on WhatsApp to secure your spot</span><span class="short">Confirm your spot</span></span>
   <a href="https://wa.me/971585635230?text=Hi!%20I've%20just%20booked%20my%20call%20and%20would%20like%20to%20confirm.%20Please%20let%20me%20know%20the%20next%20steps!" target="_blank" rel="noopener" class="top-bar__btn">Confirm on WhatsApp</a>
 </div>
 
